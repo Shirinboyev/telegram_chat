@@ -1,4 +1,5 @@
 package backend.dto;
 
-public class LoginDto {
+public record LoginDto( String userName,String password) {
 }
+
