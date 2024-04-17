@@ -1,6 +1,7 @@
-package backend.model;
+package backend.model.channel;
 
 import backend.enums.Type;
+import backend.model.baseModel.BaseModel;
 
 public class Channel extends BaseModel {
     private String name;

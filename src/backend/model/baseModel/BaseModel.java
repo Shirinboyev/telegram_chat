@@ -1,4 +1,4 @@
-package backend.model;
+package backend.model.baseModel;
 
 import java.io.Serializable;
 import java.util.UUID;

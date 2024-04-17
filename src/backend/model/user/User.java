@@ -1,4 +1,4 @@
-package backend.model;
+package backend.model.user;
 
 public class User {
     private String name;
