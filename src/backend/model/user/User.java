@@ -1,6 +1,8 @@
 package backend.model.user;
 
-public class User {
+import backend.model.baseModel.BaseModel;
+
+public class User extends BaseModel {
     private String name;
     private String username;
     private Integer phoneNumber;
