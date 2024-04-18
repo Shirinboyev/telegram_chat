@@ -1,10 +1,41 @@
+
 package backend.service.userService;
 
+import backend.dto.LoginDto;
 import backend.model.user.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserServiceImp implements UserService {
+
+    private List<User> userList;
+
+    public UserServiceImp(LoginDto list) {
+        this.userList = new ArrayList<>();
+        this.userList.add(new User("zubayr", "zubayr_ibn_avvam", 935513634, "gayrat3634"));
+    }
+
+    @Override
+    public User login(LoginDto login, List<User> users) {
+        return null;
+    }
+
+    @Override
+    public User login(LoginDto login) {
+        for (User user1 : userList) {
+            if (login.number().equals(user1.getPhoneNumber()) && login.password().equals(user1.getPassword())) {
+                return user1;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void signUp(User user) {
+
+    }
+
     @Override
     public void deleteGroup(String groupId) {
 
@@ -27,6 +58,11 @@ public class UserServiceImp implements UserService {
 
     @Override
     public boolean createContact() {
-        return false;
+        return true;
+    }
+
+    @Override
+    public User getContact() {
+        return (User) userList;
     }
 }
