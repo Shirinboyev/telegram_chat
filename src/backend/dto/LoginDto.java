@@ -1,5 +1,5 @@
 package backend.dto;
 
-public record LoginDto( String userName,String password) {
+public record LoginDto( String userName,Integer number,String password) {
 }
 
