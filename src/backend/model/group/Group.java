@@ -9,7 +9,6 @@ public class Group extends BaseModel {
     private boolean orAdmin;
 
     public Group(String id, String userId, String groupId, boolean orAdmin) {
-        super (id);
         this.userId = userId;
         this.groupId = groupId;
         this.orAdmin = orAdmin;

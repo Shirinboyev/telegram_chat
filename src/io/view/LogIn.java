@@ -5,9 +5,7 @@ import backend.model.user.User;
 import backend.service.userService.UserServiceImp;
 import io.utils.Utils;
 
-import java.util.List;
-
-public class View {
+public class LogIn {
     private static User currentUser;
 
     public static void menu() {
@@ -44,7 +42,17 @@ public class View {
         System.out.println("Sign Up");
 
         String name = Utils.enterStr("Name: ");
-        String number = Utils.enterStr("number");
+        String username = Utils.enterStr("username: ");
+        Integer number = Utils.enterInt("number");
         String password = Utils.enterStr("password");
+
+        User newUser = new User(name,username, number, password);
+
+        UserServiceImp userService = new UserServiceImp(new LoginDto(number,password));
+        userService.signUp(newUser);
+
+        System.out.println("User signed up successfully.");
+
+        profile();
     }
 }

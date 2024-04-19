@@ -1,23 +1,19 @@
 
 package io;
 
-import backend.model.user.User;
 import io.utils.Utils;
-import io.view.View;
-import jdk.jshell.execution.Util;
-
-import java.util.Scanner;
+import io.view.LogIn;
 
 public class FrontEnd {
 
     public static void main(String[] args) {
         System.out.println("Welcome to our Telegram application 🥳");
 
-        View.menu();
+        LogIn.menu();
         Integer choose = Utils.enterInt("choose: ");
         switch (choose){
-            case 1 -> View.login();
-            case 2 -> View.signUp();
+            case 1 -> LogIn.login();
+            case 2 -> LogIn.signUp();
             case 0 -> {
                 System.out.println("Bye Bye Came back 🥲");
                 return;

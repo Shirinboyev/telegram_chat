@@ -33,7 +33,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public void signUp(User user) {
-
+        userList.add(user);
     }
 
     @Override

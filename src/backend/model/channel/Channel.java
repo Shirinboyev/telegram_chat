@@ -9,7 +9,6 @@ public class Channel extends BaseModel {
     private final Type type;
 
     public Channel(String id, Type type, String description, String name) {
-        super (id);
         this.type = type;
         this.description = description;
         this.name = name;
