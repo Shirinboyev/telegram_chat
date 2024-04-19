@@ -6,12 +6,12 @@ import backend.model.baseModel.BaseModel;
 public class Group extends BaseModel {
     private final String userId;
     private final String groupId;
-    private boolean orAdmin;
+    private boolean admin;
 
-    public Group(String id, String userId, String groupId, boolean orAdmin) {
+    public Group(String id, String userId, String groupId, boolean admin) {
         this.userId = userId;
         this.groupId = groupId;
-        this.orAdmin = orAdmin;
+        this.admin = admin;
     }
 
     public String getUserId() {
@@ -23,10 +23,10 @@ public class Group extends BaseModel {
     }
 
     public boolean isOrAdmin() {
-        return orAdmin;
+        return admin;
     }
 
     public void setOrAdmin(boolean orAdmin) {
-        this.orAdmin = orAdmin;
+        this.admin = orAdmin;
     }
 }
