@@ -21,6 +21,7 @@ public class UserServiceImp implements UserService {
         return null;
     }
 
+
     @Override
     public User login(LoginDto login) {
         for (User user1 : userList) {
@@ -28,6 +29,11 @@ public class UserServiceImp implements UserService {
                 return user1;
             }
         }
+        return null;
+    }
+
+    @Override
+    public User login(String username, String password) {
         return null;
     }
 

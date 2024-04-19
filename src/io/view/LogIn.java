@@ -5,6 +5,8 @@ import backend.model.user.User;
 import backend.service.userService.UserServiceImp;
 import io.utils.Utils;
 
+import java.awt.*;
+
 public class LogIn {
     private static User currentUser;
 
@@ -42,10 +44,10 @@ public class LogIn {
                 }
             }
         } else {
-            System.out.println("Welcome " + currentUser.getName());
+            System.out.println("\u001B[33mWelcome " + currentUser.getName());
+
             profile();
         }
-        System.out.println("===================================================");
     }
 
     private static void profile() {
