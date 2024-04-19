@@ -1,6 +1,5 @@
 package backend.service.chatService;
 
-import backend.dto.LoginDto;
 import backend.model.user.User;
 import backend.service.userService.UserService;
 

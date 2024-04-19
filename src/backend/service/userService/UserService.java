@@ -7,13 +7,15 @@ import java.util.List;
 
 public interface UserService {
 
-  //  User login(LoginDto login);
-
     User login(LoginDto login, List<User> users);
 
-    User login(String username, String password);
+   /* User login(String username, String password);
+
+    User login(LoginDto login);*/
 
     User login(LoginDto login);
+
+    User login(String username, String password);
 
     void signUp(User user);
     void deleteGroup(String groupId);

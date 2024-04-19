@@ -1,10 +1,12 @@
 
 package io;
 
+import backend.model.user.User;
 import io.utils.Utils;
 import io.view.LogIn;
 
 public class FrontEnd {
+    public static User currentUser;
 
     public static void main(String[] args) {
         System.out.println("Welcome to our Telegram application 🥳");
