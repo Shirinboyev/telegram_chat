@@ -11,6 +11,8 @@ public interface UserService {
 
     User login(LoginDto login, List<User> users);
 
+    User login(String username, String password);
+
     User login(LoginDto login);
 
     void signUp(User user);
