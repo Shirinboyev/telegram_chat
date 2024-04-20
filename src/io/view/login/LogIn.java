@@ -1,13 +1,16 @@
-package io.view;
+package io.view.login;
 
 import backend.dto.LoginDto;
 import backend.model.user.User;
+import backend.service.userService.UserService;
 import backend.service.userService.UserServiceImp;
 import io.utils.Utils;
 
 import java.awt.*;
 
 public class LogIn {
+    static UserService userService = UserServiceImp.getInstance();
+
     private static User currentUser;
 
     public static void menu() {

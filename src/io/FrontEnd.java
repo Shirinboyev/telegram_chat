@@ -3,7 +3,7 @@ package io;
 
 import backend.model.user.User;
 import io.utils.Utils;
-import io.view.LogIn;
+import io.view.login.LogIn;
 
 public class FrontEnd {
     public static User currentUser;

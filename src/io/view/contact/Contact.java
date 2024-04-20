@@ -11,10 +11,5 @@ public class Contact {
             System.out.println("It is your number idiot! ");
             return;
         }
-
-
-
-
-
     }
 }

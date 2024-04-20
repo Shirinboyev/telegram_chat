@@ -8,19 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserServiceImp implements UserService {
+    private static UserService userService;
 
     private List<User> userList;
 
-    public UserServiceImp(LoginDto list) {
+    public UserServiceImp() {
         this.userList = new ArrayList<>();
         this.userList.add(new User("zubayr", "zubayr_ibn_avvam", 935513634, "gayrat3634"));
     }
+    public static UserService getInstance() {
+        if (userService == null) {
+            userService = new UserServiceImp();
+        }
 
-    @Override
-    public User login(LoginDto login, List<User> users) {
-        return null;
+        return userService;
     }
-
 
     @Override
     public User login(LoginDto login) {

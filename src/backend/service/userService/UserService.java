@@ -6,14 +6,7 @@ import backend.model.user.User;
 import java.util.List;
 
 public interface UserService {
-
-    User login(LoginDto login, List<User> users);
-
-   /* User login(String username, String password);
-
-    User login(LoginDto login);*/
-
-    User login(LoginDto login);
+        User login(LoginDto login);
 
     User login(String username, String password);
 
