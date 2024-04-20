@@ -1,5 +1,5 @@
 package io.view.chat;
 
-public class Chat {
+public class ChatView {
 
 }

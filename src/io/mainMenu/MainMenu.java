@@ -6,6 +6,9 @@ import backend.model.group.Group;
 import backend.service.chatService.ChatService;
 import io.setting.Setting;
 import io.utils.Utils;
+import io.view.channels.ChannelView;
+import io.view.contact.ContactView;
+import io.view.group.GroupView;
 import io.view.login.LogIn;
 
 public class MainMenu {
@@ -16,10 +19,10 @@ public class MainMenu {
         choose = Utils.enterInt("choose: ");
 
         switch (choose){
-            case 1 -> Contact.addContact();
+            case 1 -> ContactView.addContact();
             case 2 -> ChatService.methods();
-            case 3 -> Group.methods();
-            case 4 -> Channel.methods();
+            case 3 -> GroupView.methods();
+            case 4 -> ChannelView.methods();
             case 5 -> Setting.methods();
 
             case 0 -> {

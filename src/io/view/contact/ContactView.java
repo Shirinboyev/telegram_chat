@@ -3,7 +3,7 @@ package io.view.contact;
 import io.FrontEnd;
 import io.utils.Utils;
 
-public class Contact {
+public class ContactView {
     public static void addContact() {
         Integer number = Utils.enterInt("Enter number : ");
 
