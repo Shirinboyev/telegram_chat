@@ -9,7 +9,7 @@ public class FrontEnd {
     public static User currentUser;
 
     public static void main(String[] args) {
-        System.out.println("Welcome to our Telegram application 🥳");
+        System.out.println("Welcome to our Telegram apphyhybylication 🥳");
 
         LogIn.menu();
         Integer choose = Utils.enterInt("choose: ");
