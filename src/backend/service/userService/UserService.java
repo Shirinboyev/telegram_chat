@@ -26,4 +26,7 @@ public interface UserService {
     User getContact();
 
 
+    boolean isExist(String userId);
+
+    boolean Exist(String userId);
 }
