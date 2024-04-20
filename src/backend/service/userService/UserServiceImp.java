@@ -71,4 +71,14 @@ public class UserServiceImp implements UserService {
     public User getContact() {
         return (User) userList;
     }
+
+    @Override
+    public boolean isExist(String userId) {
+        return false;
+    }
+
+    @Override
+    public boolean Exist(String userId) {
+        return false;
+    }
 }
