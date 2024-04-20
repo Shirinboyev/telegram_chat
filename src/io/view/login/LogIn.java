@@ -82,4 +82,5 @@ public class LogIn {
         System.out.println("\u001B[33mWelcome " + currentUser.getName());
         profile();
     }
+
 }

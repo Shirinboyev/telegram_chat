@@ -14,6 +14,10 @@ public class Group extends BaseModel {
         this.admin = admin;
     }
 
+    public static void methods() {
+
+    }
+
     public String getUserId() {
         return userId;
     }

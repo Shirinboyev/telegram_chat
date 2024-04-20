@@ -7,6 +7,10 @@ import java.util.List;
 
 public interface ChatService extends BaseService<Chat> {
 
+    static void methods() {
+
+    }
+
     List<Chat> getChatsOfUser(String userId);
     Chat getChatOfUser(String userId);
     boolean Exist(String userId);

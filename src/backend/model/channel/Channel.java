@@ -14,6 +14,10 @@ public class Channel extends BaseModel {
         this.name = name;
     }
 
+    public static void methods() {
+
+    }
+
     public String getName() {
         return name;
     }

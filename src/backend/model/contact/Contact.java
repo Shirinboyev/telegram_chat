@@ -13,6 +13,10 @@ public class Contact  extends BaseModel implements  Cloneable {
         this.name = name;
     }
 
+    public static void addContact() {
+
+    }
+
     public String getUserId() {
         return userId;
     }
