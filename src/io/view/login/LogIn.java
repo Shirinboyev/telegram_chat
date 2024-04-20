@@ -33,7 +33,7 @@ public class LogIn {
 
         String password = Utils.enterStr("Password: ");
         LoginDto userLogin = new LoginDto(number, password);
-        UserServiceImp userService = new UserServiceImp(new LoginDto(number,password));
+        UserServiceImp userService = new UserServiceImp();
         currentUser = userService.login(userLogin);
 
         if (currentUser == null) {
