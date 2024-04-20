@@ -8,9 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatServiceImp implements ChatService {
-
     private static ChatService chatService;
-    private List<Chat> chat;
+        private List<Chat> chat;
 
     public ChatServiceImp() {
 

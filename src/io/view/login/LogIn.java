@@ -73,11 +73,13 @@ public class LogIn {
 
         User newUser = new User(name,username, number, password);
 
-        UserServiceImp userService = new UserServiceImp(new LoginDto(number,password));
+        UserServiceImp userService = new UserServiceImp();
+
         userService.signUp(newUser);
 
         System.out.println("User signed up successfully.");
 
+        System.out.println("\u001B[33mWelcome " + currentUser.getName());
         profile();
     }
 }
