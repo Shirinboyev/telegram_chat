@@ -1,21 +1,21 @@
 package backend.model.group;
 
-import backend.enums.Type;
 import backend.model.baseModel.BaseModel;
 
 public class GroupUser extends BaseModel {
     private final String userId;
     private final String groupId;
-    private boolean admin;
+    private boolean isAdmin;
 
-    public GroupUser(String id, String userId, String groupId, boolean admin) {
+    public GroupUser(String userId, String groupId, boolean isAdmin) {
         this.userId = userId;
         this.groupId = groupId;
-        this.admin = admin;
+        this.isAdmin = isAdmin;
     }
 
+
     public void setAdmin(boolean admin) {
-        admin = admin;
+        isAdmin = admin;
     }
 
     public String getUserId() {
@@ -26,7 +26,7 @@ public class GroupUser extends BaseModel {
         return groupId;
     }
 
-    public boolean orAdmin() {
-        return admin;
+    public boolean isAdmin() {
+        return isAdmin;
     }
 }

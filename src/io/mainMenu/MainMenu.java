@@ -7,12 +7,13 @@ import backend.service.chatService.ChatService;
 import io.setting.Setting;
 import io.utils.Utils;
 import io.view.channels.ChannelView;
+import io.view.chat.ChatView;
 import io.view.contact.ContactView;
 import io.view.group.GroupView;
 import io.view.login.LogIn;
 
 public class MainMenu {
-    public static void mwthods(){
+    public static void methods(){
         Integer choose;
         do {
         menu();
@@ -20,7 +21,7 @@ public class MainMenu {
 
         switch (choose){
             case 1 -> ContactView.addContact();
-            case 2 -> ChatService.methods();
+            case 2 -> ChatView.methods();
             case 3 -> GroupView.methods();
             case 4 -> ChannelView.methods();
             case 5 -> Setting.methods();

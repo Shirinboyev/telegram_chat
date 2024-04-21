@@ -1,5 +1,25 @@
 package backend.service.groupService.groupOfUserService;
 
-public interface GroupOfUserService {
+import backend.model.group.GroupUser;
+import backend.model.user.User;
+import backend.service.baseService.BaseService;
 
+import java.util.List;
+
+public interface GroupOfUserService extends BaseService<GroupUser> {
+    int getCountOfMembers(String groupId);
+
+    List<User> getMembers(String groupId, String userId);
+
+    void deleteByMemberId(String userId, String groupId);
+    boolean isAdmin(String userId, String groupId);
+
+    void deleteAllMembers(String groupId);
+    List<GroupUser> getListOfGroupsByUserId(String userId);
+
+    void deleteByUserId(String userId);
+
+    GroupUser getByUserId(String userId);
+
+    int countAdmins(String groupId);
 }

@@ -6,7 +6,7 @@ public class Chat extends BaseModel {
     private final  String firstUserId;
     private final  String  secondUserId;
 
-    public Chat(String id, String firstUserId, String secondUserId) {
+    public Chat(String firstUserId, String secondUserId) {
 
         this.firstUserId = firstUserId;
         this.secondUserId = secondUserId;

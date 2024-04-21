@@ -7,7 +7,7 @@ public class Contact  extends BaseModel implements  Cloneable {
     private String contactId;
     private  String name;
 
-    public Contact(String id, String userId, String contactId, String name) {
+    public Contact(String id, String userId, String contactId) {
         this.userId = userId;
         this.contactId = contactId;
         this.name = name;

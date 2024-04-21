@@ -15,6 +15,14 @@ public class User extends BaseModel {
         this.password = password;
     }
 
+    public User(String name, String phoneNumber) {
+
+    }
+
+    public User(String name, boolean b) {
+
+    }
+
     public String getName() {
         return name;
     }
@@ -45,5 +53,9 @@ public class User extends BaseModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isGroup() {
+        return false;
     }
 }

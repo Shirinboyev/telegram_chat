@@ -4,6 +4,7 @@ import backend.dto.LoginDto;
 import backend.model.user.User;
 import backend.service.userService.UserService;
 import backend.service.userService.UserServiceImp;
+import io.mainMenu.MainMenu;
 import io.utils.Utils;
 
 import java.awt.*;
@@ -48,8 +49,7 @@ public class LogIn {
             }
         } else {
             System.out.println("\u001B[33mWelcome " + currentUser.getName());
-
-            profile();
+            MainMenu.methods();
         }
     }
 
@@ -78,9 +78,8 @@ public class LogIn {
         userService.signUp(newUser);
 
         System.out.println("User signed up successfully.");
-
-        System.out.println("\u001B[33mWelcome " + currentUser.getName());
-        profile();
+        System.out.println("Welcome " + name);
+        MainMenu.methods();
     }
 
 }
