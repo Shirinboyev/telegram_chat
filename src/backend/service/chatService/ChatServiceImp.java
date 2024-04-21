@@ -1,19 +1,18 @@
 package backend.service.chatService;
 
 import backend.model.chat.Chat;
-import backend.model.user.User;
-import backend.service.userService.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ChatServiceImp implements ChatService {
     private static ChatService chatService;
-        private List<Chat> chat;
+    private final List<Chat> chats;
 
     public ChatServiceImp() {
 
-        this.chat = new ArrayList<> ();
+        this.chats = new ArrayList<> ();
     }
 
     public static ChatService getInstance() {
@@ -25,50 +24,32 @@ public class ChatServiceImp implements ChatService {
     }
 
     @Override
-    public List<Chat> getChatsOfUser(String userId) {
-        List<Chat> chatsOfUser = new ArrayList<>();
-        for (Chat chat1 : chat) {
-            if (chat1.getFirstUserId().equals(userId) || chat1.getSecondUserId().equals(userId)) {
-                chatsOfUser.add(chat1);
+    public Chat getOrCreate(String id1,String id2) {
+        for (Chat chat : chats) {
+            if(Objects.equals(chat.getId1(), id1) && Objects.equals(chat.getId2(), id2)
+            || Objects.equals(chat.getId1(), id2) && Objects.equals(chat.getId2(), id1)) {
+                return chat;
             }
         }
-        return chatsOfUser;
-    }
-
-    @Override
-    public Chat getChatOfUser(String userId) {
-        for (Chat chats : chat) {
-            if (chats.getFirstUserId().equals(userId) || chats.getSecondUserId().equals(userId)) {
-                return chats;
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public boolean Exist(String userId) {
-        for (Chat chats : chat) {
-            if (chats.getFirstUserId().equals(userId) || chats.getSecondUserId().equals(userId)) {
-                return true;
-            }
-        }
-        return false;
+        Chat chat = new Chat(id1,id2);
+        chats.add(chat);
+        return chat;
     }
 
     @Override
     public boolean add(Chat ch) {
-        return chat.add (ch);
+        return chats.add (ch);
     }
 
     @Override
     public boolean delete(Chat chat0) {
-        return chat.remove(chat0);
+        return chats.remove(chat0);
     }
 
     @Override
     public Chat get(String id) {
-        for (Chat chat1 : chat) {
-            if (chat1.getId ().equals(id)) {
+        for (Chat chat1 : chats) {
+            if (chat1.getId().equals(id)) {
 
                 return chat1;
             }
@@ -78,6 +59,6 @@ public class ChatServiceImp implements ChatService {
 
     @Override
     public List<Chat> getList() {
-        return chat;
+        return chats;
     }
 }

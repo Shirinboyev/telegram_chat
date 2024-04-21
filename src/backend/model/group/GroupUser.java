@@ -1,22 +1,22 @@
 package backend.model.group;
 
 import backend.enums.Role;
-import backend.model.baseModel.BaseModel;
+import backend.model.BaseModel;
 
 public class GroupUser extends BaseModel {
     private final String userId;
     private final String groupId;
-    private Role isAdmin;
+    private Role role;
 
     public GroupUser(String userId, String groupId) {
         this.userId = userId;
         this.groupId = groupId;
-        this.isAdmin = Role.USER;
+        this.role = Role.USER;
     }
 
 
-    public void setIsAdmin(Role isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getUserId() {
@@ -27,8 +27,8 @@ public class GroupUser extends BaseModel {
         return groupId;
     }
 
-    public Role getIsAdmin() {
-        return isAdmin;
+    public Role getRole() {
+        return role;
     }
 
 

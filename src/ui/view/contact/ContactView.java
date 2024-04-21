@@ -1,37 +1,51 @@
 package ui.view.contact;
 
-
+import backend.enums.MessageType;
 import backend.model.chat.Chat;
-import backend.model.contact.Contact;
+import backend.model.massages.Message;
+import backend.model.user.User;
 import backend.service.chatService.ChatService;
 import backend.service.chatService.ChatServiceImp;
 import backend.service.contact.ContactService;
 import backend.service.contact.ContactServiceImp;
+import backend.service.messageService.MessageService;
+import backend.service.messageService.MessageServiceImp;
 import backend.service.userService.UserService;
 import backend.service.userService.UserServiceImp;
-import ui.utils.Utils;
 
-import static ui.FrontEnd.currentUser;
+import java.util.List;
+
+import ui.FrontEnd;
+
+import static ui.utils.Utils.*;
 
 public class ContactView {
     static UserService userService = UserServiceImp.getInstance();
     static ContactService contactService = ContactServiceImp.getInstance();
     static ChatService chatService = ChatServiceImp.getInstance();
-
-    public static void addContact() {
-        String number = Utils.enterStr("Enter number : ");
-        String contactId = userService.getUserByNumber(number);
-
-
-
-                String name = Utils.enterStr("Enter name : ");
-                Contact contacts = new Contact(currentUser.getId(), contactId, name);
-
-                if (contactService.add(contacts)) {
-                    System.out.println("New contact created successfully!");
-                    if (chatService.getChatOfUser(currentUser.getId())==null) {
-                        chatService.add(new Chat(currentUser.getId(), contactId));
-                    }
+    static MessageService messageService = MessageServiceImp.getInstance();
+    public static void search() {
+        String name = enterStr("Name: ");
+        List<User> users= userService.findByName(name);
+        int i=1;
+        for (User user : users) {
+            System.out.println(i++ +". "+user.getName());
         }
+        int index = enterInt("Choose: ")-1;
+        if(index<0 || index>users.size()) {
+            System.out.println("Please enter a valid index");
+            return;
+        }
+
+        sendMessage(users, index);
+    }
+
+    private static void sendMessage(List<User> users, int index) {
+        String id = users.get(index).getId();
+        Chat chat = chatService.getOrCreate(FrontEnd.currentUser.getId(), id);
+        String text = enterStr("Text: ");
+        Message message = new Message(text, MessageType.USER, chat.getId(), id);
+        boolean isWorked = messageService.add(message);
+        notificationMessage("Message","sent",isWorked);
     }
 }

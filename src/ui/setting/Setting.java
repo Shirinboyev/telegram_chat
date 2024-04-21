@@ -62,9 +62,8 @@ public class Setting {
                 1. Change name
                 2. Change nickname
                 3. Change password
-                4. Delete account
-                                
+                4. Delete account     \s
                 0. Go back
-                """);
+               \s""");
     }
 }

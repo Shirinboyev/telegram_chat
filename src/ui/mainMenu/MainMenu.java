@@ -14,7 +14,7 @@ public class MainMenu {
         menu();
         choose = Utils.enterInt("choose: ");
         switch (choose){
-            case 1 -> ContactView.addContact();
+            case 1 -> ContactView.search();
             case 2 -> ChatView.methods();
             case 3 -> GroupView.methods();
             case 4 -> ChannelView.methods();
@@ -31,16 +31,22 @@ public class MainMenu {
 
     }
 
-    private static void menu() {
+    public static void menu() {
         System.out.println("""
                 Menu :
-                1. Add contact
+                1. Search
                 2. Chats
                 3. Groups
                 4. Channels
                 5. Settings
-                                
                 0. Log Out
+                """);
+    }
+    public static void message(){
+        System.out.println("""
+                1.Send Message
+                2.Edit Message
+                3.Delete Message
                 """);
     }
 }

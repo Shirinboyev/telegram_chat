@@ -2,16 +2,15 @@ package backend.service.messageService;
 
 import backend.enums.Type;
 import backend.model.chat.Chat;
-import backend.model.massages.Massages;
+import backend.model.massages.Message;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class MessageServiceImp implements MessageService{
     private static MessageService messageService;
 
-    private List<Massages> messages;
+    private List<Message> messages;
 
     public MessageServiceImp() {
         this.messages = new ArrayList<>();
@@ -26,18 +25,18 @@ public class MessageServiceImp implements MessageService{
     }
 
     @Override
-    public boolean add(Massages o) {
+    public boolean add(Message o) {
         return messages.add(o);
     }
 
     @Override
-    public boolean delete(Massages massage) {
-        return messages.remove (massage);
+    public boolean delete(Message message) {
+        return messages.remove (message);
     }
 
     @Override
-    public Massages get(String id) {
-        for (Massages message : messages) {
+    public Message get(String id) {
+        for (Message message : messages) {
             if (message.getId().equals(id)) {
                 return message;
             }
@@ -46,15 +45,15 @@ public class MessageServiceImp implements MessageService{
     }
 
     @Override
-    public List<Massages> getList() {
+    public List<Message> getList() {
         return messages;
     }
 
     @Override
-    public List<Massages> getMessagesOfChat(Chat chat) {
-        List<Massages> messagesOfChat = new ArrayList<>();
+    public List<Message> getMessagesOfChat(Chat chat) {
+        List<Message> messagesOfChat = new ArrayList<>();
 
-        for (Massages message : messages) {
+        for (Message message : messages) {
             if (message.getType().equals(Type.PRIVATE) && message.getToId().equals(chat.getId())) {
                 messagesOfChat.add(message);
             }
@@ -64,9 +63,9 @@ public class MessageServiceImp implements MessageService{
     }
 
     @Override
-    public List<Massages> getMessagesGroupOrChannel(String groupId) {
-        List<Massages> messagesList = new ArrayList<>();
-        for (Massages message : messages) {
+    public List<Message> getMessagesGroupOrChannel(String groupId) {
+        List<Message> messagesList = new ArrayList<>();
+        for (Message message : messages) {
             if (message.getToId().equals(groupId)) {
                 messagesList.add(message);
             }
@@ -78,8 +77,8 @@ public class MessageServiceImp implements MessageService{
     public int countNotReadMessages(String fromId, String toId) {
 
         int count = 0;
-        for (Massages message : messages) {
-            if (message.getToId().equals(fromId) && message.getUserId().equals(toId) && (!message.isRead())) {
+        for (Message message : messages) {
+            if (message.getToId().equals(fromId) && message.getChatId().equals(toId) && (!message.isRead())) {
                 count++;
 
             }

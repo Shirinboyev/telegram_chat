@@ -124,7 +124,7 @@ public class GroupView {
         User users = members.get(index);
 
         GroupUser groupUsers = groupOfUserService.getByUserId(users.getId());
-        groupUsers.setIsAdmin(Role.USER);
+        groupUsers.setRole(Role.USER);
         System.out.println("Successfully");
     }
 
@@ -201,7 +201,7 @@ public class GroupView {
         Group group = new Group(currentUser.getId(),name);
         boolean isWorked = groupService.add(group);
         GroupUser member = new GroupUser(currentUser.getId(),group.getId());
-        member.setIsAdmin(Role.ADMIN);
+        member.setRole(Role.ADMIN);
         groupOfUserService.add(member);
         notificationMessage("Group","created",isWorked);
 

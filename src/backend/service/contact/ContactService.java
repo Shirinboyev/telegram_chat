@@ -1,7 +1,7 @@
 package backend.service.contact;
 
 import backend.model.contact.Contact;
-import backend.service.baseService.BaseService;
+import backend.service.BaseService;
 
 import java.util.List;
 

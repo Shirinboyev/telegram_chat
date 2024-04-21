@@ -1,6 +1,6 @@
-package backend.service.baseService;
+package backend.service;
 
-import backend.model.baseModel.BaseModel;
+import backend.model.BaseModel;
 
 import java.util.List;
 

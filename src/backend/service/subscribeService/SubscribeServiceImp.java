@@ -1,6 +1,6 @@
-package backend.service.channelService.channelUserSerrvice;
+package backend.service.subscribeService;
 
-import backend.model.channel.Channel;
+import backend.model.channel.Subscribe;
 import backend.model.user.User;
 import backend.service.userService.UserService;
 import backend.service.userService.UserServiceImp;
@@ -8,55 +8,47 @@ import backend.service.userService.UserServiceImp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChannelUserServiceImp implements ChannelUserService{
+public class SubscribeServiceImp implements SubscribeService {
     UserService userService = UserServiceImp.getInstance();
-    private static ChannelUserService channelUserService;
+    private static SubscribeService subscribeService;
 
-    private List<Channel> channelUsers;
+    private List<Subscribe> subscribeUsers;
 
-    public ChannelUserServiceImp() {
-        this.channelUsers = new ArrayList<> ();
+    public SubscribeServiceImp() {
+        this.subscribeUsers = new ArrayList<> ();
     }
 
 
     @Override
-    public boolean add(Channel o) {
-        return channelUsers.add(o);
+    public boolean add(Subscribe o) {
+        return subscribeUsers.add(o);
     }
 
     @Override
-    public boolean delete(Channel channel) {
-        return channelUsers.remove(channel);
+    public boolean delete(Subscribe subscribe) {
+        return subscribeUsers.remove(subscribe);
 
     }
 
     @Override
-    public Channel get(String id) {
-        for (Channel channelUser : channelUsers) {
-            if (channelUser.getId().equals(id)) {
-                return channelUser;
+    public Subscribe get(String id) {
+        for (Subscribe subscribeUser : subscribeUsers) {
+            if (subscribeUser.getId().equals(id)) {
+                return subscribeUser;
             }
         }
         return null;
     }
 
     @Override
-    public List<Channel> getList() {
-        return channelUsers;
+    public List<Subscribe> getList() {
+        return subscribeUsers;
 
     }
 
     @Override
     public int countMembers(String channelId) {
-        int count = 0;
-        for (Channel channelUser : channelUsers) {
-            if (channelUser.getChannelId().equals(channelId)) {
-                count++;
-            }
-        }
-        return count;
-
-
+        return 0;
     }
 
     @Override
@@ -76,7 +68,7 @@ public class ChannelUserServiceImp implements ChannelUserService{
     }
 
     @Override
-    public Channel getByMemberId(String userId, String channelId) {
+    public Subscribe getByMemberId(String userId, String channelId) {
         return null;
     }
 

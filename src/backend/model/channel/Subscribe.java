@@ -1,22 +1,20 @@
 package backend.model.channel;
 
 import backend.enums.Type;
-import backend.model.baseModel.BaseModel;
+import backend.model.BaseModel;
 
-public class Channel extends BaseModel {
+public class Subscribe extends BaseModel {
     private String name;
     private String description;
     private final Type type;
-    private String id;
-    private String channelId;
+    private String ownerId;
 
 
-    public Channel(String name, String description, Type type, String id,String channelId) {
+    public Subscribe(String name, String description, Type type, String ownerId) {
         this.name = name;
         this.description = description;
         this.type = type;
-        this.id = id;
-        this.channelId=channelId;
+        this.ownerId = ownerId;
     }
 
     public String getName() {
@@ -41,18 +39,10 @@ public class Channel extends BaseModel {
 
     @Override
     public String getId() {
-        return id;
+        return ownerId;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getChannelId() {
-        return channelId;
-    }
-
-    public void setChannelId(String channelId) {
-        this.channelId = channelId;
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 }

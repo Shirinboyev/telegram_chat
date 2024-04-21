@@ -1,7 +1,7 @@
 package backend.model.group;
 
 import backend.enums.Type;
-import backend.model.baseModel.BaseModel;
+import backend.model.BaseModel;
 
 public class Group extends BaseModel {
     private String name;

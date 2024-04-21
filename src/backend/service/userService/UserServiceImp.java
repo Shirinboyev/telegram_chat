@@ -131,6 +131,15 @@ public class UserServiceImp implements UserService {
         return null;
     }
 
-
-
+    @Override
+    public List<User> findByName(String name) {
+        name = name.toLowerCase();
+        List<User> users = new ArrayList<>();
+        for (User user : userList) {
+            if(user.getName().contains(name)){
+                users.add(user);
+            }
+        }
+        return users;
+    }
 }

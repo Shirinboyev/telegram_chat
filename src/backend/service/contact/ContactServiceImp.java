@@ -1,8 +1,6 @@
 package backend.service.contact;
 
-import backend.model.baseModel.BaseModel;
 import backend.model.contact.Contact;
-import backend.service.chatService.ChatService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +31,7 @@ public class ContactServiceImp implements ContactService{
     @Override
     public Contact get(String id) {
         for (Contact contact : contact) {
-            if (contact.getId ().equals (id)) {
+            if (contact.getId().equals (id)) {
                 return contact;
             }
         }

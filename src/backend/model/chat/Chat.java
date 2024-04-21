@@ -1,22 +1,22 @@
 package backend.model.chat;
 
-import backend.model.baseModel.BaseModel;
+import backend.model.BaseModel;
 
 public class Chat extends BaseModel {
-    private final  String firstUserId;
-    private final  String  secondUserId;
+    private final  String id1;
+    private final  String id2;
 
-    public Chat(String firstUserId, String secondUserId) {
+    public Chat(String id1, String id2) {
 
-        this.firstUserId = firstUserId;
-        this.secondUserId = secondUserId;
+        this.id1 = id1;
+        this.id2 = id2;
     }
 
-    public String getFirstUserId() {
-        return firstUserId;
+    public String getId1() {
+        return id1;
     }
 
-    public String getSecondUserId() {
-        return secondUserId;
+    public String getId2() {
+        return id2;
     }
 }

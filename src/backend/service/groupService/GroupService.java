@@ -1,7 +1,7 @@
 package backend.service.groupService;
 
 import backend.model.group.Group;
-import backend.service.baseService.BaseService;
+import backend.service.BaseService;
 
 import java.util.List;
 

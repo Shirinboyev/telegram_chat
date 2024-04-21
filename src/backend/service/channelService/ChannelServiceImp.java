@@ -1,8 +1,7 @@
 package backend.service.channelService;
 
 import backend.enums.Type;
-import backend.model.channel.Channel;
-import backend.service.chatService.ChatService;
+import backend.model.channel.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +9,10 @@ import java.util.List;
 public class ChannelServiceImp implements ChannelService {
 
     private static ChannelService channelService;
-    private List<Channel> channels;
+    private List<Subscribe> subscribes;
 
     public ChannelServiceImp() {
-        this.channels = new ArrayList<> ();
+        this.subscribes = new ArrayList<> ();
     }
 
     public static ChannelService getInstance(){
@@ -24,36 +23,36 @@ public class ChannelServiceImp implements ChannelService {
     }
 
     @Override
-    public boolean add(Channel o) {
-        return channels.add(o);
+    public boolean add(Subscribe o) {
+        return subscribes.add(o);
     }
 
     @Override
-    public boolean delete(Channel channel) {
-        return channels.remove (channel);
+    public boolean delete(Subscribe subscribe) {
+        return subscribes.remove (subscribe);
     }
 
     @Override
-    public Channel get(String id) {
-        for (Channel channel : channels) {
-            if (channel.getId().equals(id)) {
-                return channel;
+    public Subscribe get(String id) {
+        for (Subscribe subscribe : subscribes) {
+            if (subscribe.getId().equals(id)) {
+                return subscribe;
             }
         }
         return null;
     }
 
     @Override
-    public List<Channel> getList() {
-        return channels;
+    public List<Subscribe> getList() {
+        return subscribes;
     }
 
     @Override
-    public List<Channel> getChannelsOfUser(String userId) {
-        List<Channel> channelsList = new ArrayList<>();
-        for (Channel channelUsers : channelService.getList()) {
-            if (channelUsers.getId().equals(userId)) {
-                channelsList.add(channelService.get(channelUsers.getId ()));
+    public List<Subscribe> getChannelsOfUser(String userId) {
+        List<Subscribe> channelsList = new ArrayList<>();
+        for (Subscribe subscribeUsers : channelService.getList()) {
+            if (subscribeUsers.getId().equals(userId)) {
+                channelsList.add(channelService.get(subscribeUsers.getId()));
             }
         }
         return channelsList;
@@ -61,19 +60,19 @@ public class ChannelServiceImp implements ChannelService {
 
     @Override
     public void deleteById(String channelId) {
-        for (Channel channel : channels) {
-            if (channel.getId().equals(channelId)) {
-                channels.remove(channel);
+        for (Subscribe subscribe : subscribes) {
+            if (subscribe.getId().equals(channelId)) {
+                subscribes.remove(subscribe);
             }
         }
     }
 
     @Override
-    public List<Channel> getChannelsByWord(String search) {
-        List<Channel> channelsList = new ArrayList<>();
-        for (Channel channel : channels) {
-            if (channel.getName().contains(search) && channel.getType().equals(Type.PUBLIC)) {
-                channelsList.add(channel);
+    public List<Subscribe> getChannelsByWord(String search) {
+        List<Subscribe> channelsList = new ArrayList<>();
+        for (Subscribe subscribe : subscribes) {
+            if (subscribe.getName().contains(search) && subscribe.getType().equals(Type.PUBLIC)) {
+                channelsList.add(subscribe);
             }
         }
         return channelsList;
@@ -81,8 +80,8 @@ public class ChannelServiceImp implements ChannelService {
 
     @Override
     public boolean issUniqueName(String name) {
-        for (Channel channel : channels) {
-            if (channel.getName().equals(name)) {
+        for (Subscribe subscribe : subscribes) {
+            if (subscribe.getName().equals(name)) {
                 return false;
             }
         }

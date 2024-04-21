@@ -1,12 +1,12 @@
-package backend.service.channelService.channelUserSerrvice;
+package backend.service.subscribeService;
 
-import backend.model.channel.Channel;
+import backend.model.channel.Subscribe;
 import backend.model.user.User;
-import backend.service.baseService.BaseService;
+import backend.service.BaseService;
 
 import java.util.List;
 
-public interface ChannelUserService extends BaseService<Channel> {
+public interface SubscribeService extends BaseService<Subscribe> {
 
     int countMembers(String channelId);
 
@@ -16,7 +16,7 @@ public interface ChannelUserService extends BaseService<Channel> {
 
     List<User> getSubscribersWithoutAdmins(String channelId);
 
-    Channel getByMemberId(String userId, String channelId);
+    Subscribe getByMemberId(String userId, String channelId);
 
     List<User> getAdminsWithoutMe(String channelId, String userId);
 

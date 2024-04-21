@@ -1,16 +1,16 @@
 package backend.service.channelService;
 
-import backend.model.channel.Channel;
-import backend.service.baseService.BaseService;
+import backend.model.channel.Subscribe;
+import backend.service.BaseService;
 
 import java.util.List;
 
-public interface ChannelService extends BaseService<Channel> {
-   List<Channel> getChannelsOfUser(String userId);
+public interface ChannelService extends BaseService<Subscribe> {
+   List<Subscribe> getChannelsOfUser(String userId);
 
    void  deleteById(String channelId);
 
-   List<Channel> getChannelsByWord(String search);
+   List<Subscribe> getChannelsByWord(String search);
 
    boolean issUniqueName(String name);
 }

@@ -1,15 +1,15 @@
 package backend.service.messageService;
 
 import backend.model.chat.Chat;
-import backend.model.massages.Massages;
-import backend.service.baseService.BaseService;
+import backend.model.massages.Message;
+import backend.service.BaseService;
 
 import java.util.List;
 
-public interface MessageService extends BaseService<Massages> {
-    List<Massages> getMessagesOfChat(Chat chat);
+public interface MessageService extends BaseService<Message> {
+    List<Message> getMessagesOfChat(Chat chat);
 
-    List<Massages> getMessagesGroupOrChannel(String groupId);
+    List<Message> getMessagesGroupOrChannel(String groupId);
 
     int countNotReadMessages(String fromId, String toId);
 
