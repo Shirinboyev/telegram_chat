@@ -36,8 +36,8 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public void signUp(User user) {
-        userList.add(user);
+    public boolean signUp(User user) {
+        return userList.add(user);
     }
 
     @Override

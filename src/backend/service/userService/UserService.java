@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserService extends BaseService<User> {
         User login(LoginDto login);
 
-    void signUp(User user);
+    boolean signUp(User user);
     void deleteGroup(String groupId);
     User getGroup(String id);
     List<User> getGroupList();

@@ -5,7 +5,7 @@ import backend.model.user.User;
 import backend.service.userService.UserService;
 import backend.service.userService.UserServiceImp;
 import io.mainMenu.MainMenu;
-import io.utils.Utils;
+import static io.utils.Utils.*;
 
 import java.awt.*;
 
@@ -22,17 +22,17 @@ public class LogIn {
 
     public static void login() {
         System.out.println("Log In ....");
-        String username = Utils.enterStr("Username: ");
+        String username = enterStr("Username: ");
         Integer number;
 
         do {
-            number = Utils.enterInt("number: ");
-            if (!Utils.isNumber(number.toString())) {
+            number = enterInt("number: ");
+            if (!isNumber(number.toString())) {
                 System.out.println("Number faqat raqam bo'lishi kerak. Iltimos, to'g'ri raqam kiriting.");
             }
-        } while (!Utils.isNumber(number.toString()));
+        } while (!isNumber(number.toString()));
 
-        String password = Utils.enterStr("Password: ");
+        String password = enterStr("Password: ");
         LoginDto userLogin = new LoginDto(number, password);
         UserServiceImp userService = new UserServiceImp();
         currentUser = userService.login(userLogin);
@@ -40,7 +40,7 @@ public class LogIn {
         if (currentUser == null) {
             System.out.println("wrong❌❌❌");
             System.out.println("Do you want try again ?  1.Yes, 0.No");
-            Integer choose = Utils.enterInt("choose: ");
+            Integer choose = enterInt("choose: ");
             switch (choose){
                 case 1:login();
                 case 0:{
@@ -58,18 +58,23 @@ public class LogIn {
     }
 
     public static void signUp() {
-        System.out.println("Sign Up");
+        String name = enterStr ("Name: ");
+        String username = enterStr ("Username: ");
+        int phoneNumber = enterInt ( "Phone: ");
+        String password = enterStr ("Password: ");
+        User user = userService.signUp(new User (name,username,phoneNumber,password));
+       /* System.out.println("Sign Up");
 
-        String name = Utils.enterStr("Name: ");
-        String username = Utils.enterStr("username: ");
+        String name = enterStr("Name: ");
+        String username = enterStr("username: ");
         Integer number;
         do {
-            number = Utils.enterInt("number: ");
-            if (!Utils.isNumber(number.toString())) {
+            number = enterInt("number: ");
+            if (!isNumber(number.toString())) {
                 System.out.println("Number faqat raqam bo'lishi kerak. Iltimos, to'g'ri raqam kiriting.");
             }
-        } while (!Utils.isNumber(number.toString()));
-        String password = Utils.enterStr("password: ");
+        } while (!isNumber(number.toString()));
+        String password = enterStr("password: ");
 
         User newUser = new User(name,username, number, password);
 
@@ -79,7 +84,7 @@ public class LogIn {
 
         System.out.println("User signed up successfully.");
         System.out.println("Welcome " + name);
-        MainMenu.methods();
+        MainMenu.methods();*/
     }
 
 }
