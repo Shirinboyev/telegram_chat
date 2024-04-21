@@ -1,5 +1,5 @@
 package backend.enums;
-import static io.utils.Utils.*;
+import static ui.utils.Utils.*;
 
 public enum Role {
     USER , ADMIN, BLOCK;

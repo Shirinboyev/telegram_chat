@@ -1,11 +1,11 @@
-package io.view.login;
+package ui.view.login;
 
 import backend.dto.LoginDto;
 import backend.model.user.User;
 import backend.service.userService.UserService;
 import backend.service.userService.UserServiceImp;
-import io.mainMenu.MainMenu;
-import static io.utils.Utils.*;
+import ui.mainMenu.MainMenu;
+import static ui.utils.Utils.*;
 
 public class LoginView {
     static UserService userService = UserServiceImp.getInstance();

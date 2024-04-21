@@ -6,6 +6,7 @@ import backend.model.massages.Massages;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MessageServiceImp implements MessageService{
     private static MessageService messageService;

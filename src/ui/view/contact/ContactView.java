@@ -1,4 +1,4 @@
-package io.view.contact;
+package ui.view.contact;
 
 
 import backend.model.chat.Chat;
@@ -9,10 +9,9 @@ import backend.service.contact.ContactService;
 import backend.service.contact.ContactServiceImp;
 import backend.service.userService.UserService;
 import backend.service.userService.UserServiceImp;
-import io.FrontEnd;
-import io.utils.Utils;
+import ui.utils.Utils;
 
-import static io.FrontEnd.currentUser;
+import static ui.FrontEnd.currentUser;
 
 public class ContactView {
     static UserService userService = UserServiceImp.getInstance();
@@ -30,7 +29,7 @@ public class ContactView {
 
                 if (contactService.add(contacts)) {
                     System.out.println("New contact created successfully!");
-                    if (chatService.getChatOfUser(currentUser.getId()) == null) {
+                    if (chatService.getChatOfUser(currentUser.getId())==null) {
                         chatService.add(new Chat(currentUser.getId(), contactId));
                     }
         }

@@ -30,4 +30,7 @@ public class GroupUser extends BaseModel {
     public Role getIsAdmin() {
         return isAdmin;
     }
+
+
+
 }

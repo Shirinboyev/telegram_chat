@@ -1,7 +1,6 @@
-package io.view.group;
+package ui.view.group;
 
 import backend.enums.Role;
-import backend.enums.Type;
 import backend.model.group.Group;
 import backend.model.group.GroupUser;
 import backend.model.user.User;
@@ -15,15 +14,12 @@ import backend.service.messageService.MessageService;
 import backend.service.messageService.MessageServiceImp;
 import backend.service.userService.UserService;
 import backend.service.userService.UserServiceImp;
-import io.FrontEnd;
-import io.utils.Utils;
-import jdk.jshell.execution.Util;
+import ui.utils.Utils;
 
-import java.lang.reflect.Member;
 import java.util.List;
 
-import static io.FrontEnd.currentUser;
-import static io.utils.Utils.*;
+import static ui.FrontEnd.currentUser;
+import static ui.utils.Utils.*;
 
 public class GroupView {
     static GroupService groupService = GroupServiceImp.getInstance();

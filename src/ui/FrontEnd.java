@@ -1,10 +1,10 @@
 
-package io;
+package ui;
 
 import backend.model.user.User;
-import io.utils.Utils;
-import io.view.login.LoginView;
-import static io.view.login.LoginView.*;
+import ui.utils.Utils;
+import ui.view.login.LoginView;
+import static ui.view.login.LoginView.*;
 
 public class FrontEnd {
     public static User currentUser;

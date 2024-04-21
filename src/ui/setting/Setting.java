@@ -1,8 +1,8 @@
-package io.setting;
+package ui.setting;
 
 import backend.model.user.User;
-import io.FrontEnd;
-import io.utils.Utils;
+import ui.FrontEnd;
+import ui.utils.Utils;
 
 public class Setting {
 

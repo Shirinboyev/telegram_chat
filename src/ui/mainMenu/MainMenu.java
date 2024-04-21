@@ -1,11 +1,11 @@
-package io.mainMenu;
+package ui.mainMenu;
 
-import io.setting.Setting;
-import io.utils.Utils;
-import io.view.channels.ChannelView;
-import io.view.chat.ChatView;
-import io.view.contact.ContactView;
-import io.view.group.GroupView;
+import ui.setting.Setting;
+import ui.utils.Utils;
+import ui.view.channels.ChannelView;
+import ui.view.chat.ChatView;
+import ui.view.contact.ContactView;
+import ui.view.group.GroupView;
 
 public class MainMenu {
     public static void methods(){

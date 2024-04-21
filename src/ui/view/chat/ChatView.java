@@ -1,4 +1,4 @@
-package io.view.chat;
+package ui.view.chat;
 
 import backend.service.chatService.ChatService;
 import backend.service.chatService.ChatServiceImp;
@@ -8,7 +8,7 @@ import backend.service.messageService.MessageService;
 import backend.service.messageService.MessageServiceImp;
 import backend.service.userService.UserService;
 import backend.service.userService.UserServiceImp;
-import io.utils.Utils;
+import ui.utils.Utils;
 
 public class ChatView {
     static ChatService chatService = ChatServiceImp.getInstance();
