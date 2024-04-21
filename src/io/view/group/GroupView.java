@@ -1,5 +1,6 @@
 package io.view.group;
 
+import backend.enums.Role;
 import backend.enums.Type;
 import backend.model.group.Group;
 import backend.model.group.GroupUser;
@@ -18,9 +19,11 @@ import io.FrontEnd;
 import io.utils.Utils;
 import jdk.jshell.execution.Util;
 
+import java.lang.reflect.Member;
 import java.util.List;
 
 import static io.FrontEnd.currentUser;
+import static io.utils.Utils.*;
 
 public class GroupView {
     static GroupService groupService = GroupServiceImp.getInstance();
@@ -65,27 +68,20 @@ public class GroupView {
             groupsMenu(groupId);
         }
     }
-    private static void menu(boolean admin) {
+    private static void menu() {
         System.out.println("""
                 1. Send message
                 2. Exit from group
-                """);
-
-        if (admin) {
-            System.out.print("""
+     
                     3. Rename group
                     4. Delete group
                     """);
-        }
-
         System.out.println("\n0. Go back");
     }
 
     private static void groupsMenu(String groupId) {
         while (true) {
-            boolean admin = groupOfUserService.isAdmin(currentUser.getId(), groupId);
-
-            menu(admin);
+            menu();
 
             switch (Utils.enterInt("choose : ")) {
                 case 1 -> sendMessageToGroup(groupId);
@@ -96,22 +92,20 @@ public class GroupView {
                 }
 
                 case 3 -> {
-                    if (admin) {
+
                         renameGroup(groupId);
-                    }
+
                 }
 
                 case 4 -> {
-                    if (admin) {
                         deleteGroup(groupId);
                         return;
-                    }
+
                 }
                 case 5 ->{
-                    if (admin){
                         addAdmin(groupId);
                         return;
-                    }
+
                 }
                 case 0 -> {
                     return;
@@ -134,7 +128,7 @@ public class GroupView {
         User users = members.get(index);
 
         GroupUser groupUsers = groupOfUserService.getByUserId(users.getId());
-        groupUsers.setAdmin(true);
+        groupUsers.setIsAdmin(Role.USER);
         System.out.println("Successfully");
     }
 
@@ -163,13 +157,6 @@ public class GroupView {
     }
 
     private static void exitFromGroup(String groupId) {
-        if (groupOfUserService.isAdmin(currentUser.getId(), groupId)) {
-            if (groupOfUserService.countAdmins(groupId) == 1) {
-                System.out.println(" faqat siz adminsiz ! kimnidur admin qilib chiqishingiz kerak ");
-                return;
-            }
-        }
-        groupOfUserService.deleteByMemberId(currentUser.getId(), groupId);
 
 
     }
@@ -210,50 +197,22 @@ public class GroupView {
         }
         System.out.println("====================");
     }
+
+
+
     private static void createGrop() {
-        String name = Utils.enterStr("Enter name : ");
-
-        if (!groupService.isUnique(name)) {
-            System.out.println("There is not unique name ! Do you want try again ? 1 yes / 0 no");
-
-            if (Utils.enterInt("Choice : ") == 1) {
-                createGrop();
-            }
-        } else {
-            Type type = chooseType();
-            while (type == null) {
-                System.out.println("There is wrong type ! Do you want try again ? 1 yes / 0 no");
-                if (Utils.enterInt("Choice : ") != 1) {
-                    return;
-                }
-                type = chooseType();
-
-            }
-            Group groups = new Group(name, type);
-            groupService.add(groups);
-
-            groupOfUserService.add(new GroupUser(currentUser.getId(), groups.getId(), true));
-            System.out.println("Successfully");
-
-        }
+        String name = enterStr("name: ");
+        Group group = new Group(currentUser.getId(),name);
+        boolean isWorked = groupService.add(group);
+        GroupUser member = new GroupUser(currentUser.getId(),group.getId());
+        member.setIsAdmin(Role.ADMIN);
+        groupOfUserService.add(member);
+        notificationMessage("Group","created",isWorked);
 
     }
 
-    private static Type chooseType() {
-        System.out.println("""
-                1. Private
-                2. Public
-                """);
 
-        int type = Utils.enterInt("Choose : ");
 
-        Type[] types = Type.values();
-
-        if (type > types.length) {
-            return null;
-        }
-        return types[type - 1];
-    }
 
 
 

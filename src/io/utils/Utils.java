@@ -31,4 +31,10 @@ public interface Utils {
         System.out.print(hint);
         return ScanStr.nextLine();
     }
+
+    static void notificationMessage(String objName, String action, boolean isWorked) {
+        String message = isWorked ? " successfully " : " failed ";
+        String color = isWorked ? "\\u001B[32m" : "\\u001B[31m";
+        System.out.println(color + objName + message + action);
+    }
 }

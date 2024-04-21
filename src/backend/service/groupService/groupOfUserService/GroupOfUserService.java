@@ -12,7 +12,6 @@ public interface GroupOfUserService extends BaseService<GroupUser> {
     List<User> getMembers(String groupId, String userId);
 
     void deleteByMemberId(String userId, String groupId);
-    boolean isAdmin(String userId, String groupId);
 
     void deleteAllMembers(String groupId);
     List<GroupUser> getListOfGroupsByUserId(String userId);
@@ -21,5 +20,4 @@ public interface GroupOfUserService extends BaseService<GroupUser> {
 
     GroupUser getByUserId(String userId);
 
-    int countAdmins(String groupId);
 }

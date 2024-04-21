@@ -1,6 +1,6 @@
 package backend.model.massages;
 
-import backend.enums.MessageType;
+import backend.enums.Type;
 import backend.model.baseModel.BaseModel;
 
 import java.time.LocalTime;
@@ -8,14 +8,14 @@ import java.time.LocalTime;
 public class Massages extends BaseModel implements Cloneable {
 
     private String text;
-    private  MessageType type;
+    private Type type;
     private  String userId;
     private  String toId;
     private  LocalTime time;
     private boolean isRead;
 
 
-    public Massages(String text, MessageType type, String userId, String toId, LocalTime time, boolean isRead) {
+    public Massages(String text, Type type, String userId, String toId, LocalTime time, boolean isRead) {
         this.text = text;
         this.type = type;
         this.userId = userId;
@@ -32,11 +32,11 @@ public class Massages extends BaseModel implements Cloneable {
         this.text = text;
     }
 
-    public MessageType getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType(MessageType type) {
+    public void setType(Type type) {
         this.type = type;
     }
 

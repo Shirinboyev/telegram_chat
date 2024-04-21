@@ -28,7 +28,7 @@ public class UserServiceImp implements UserService {
     @Override
     public User login(LoginDto login) {
         for (User user1 : userList) {
-            if (login.number().equals(user1.getPhoneNumber()) && login.password().equals(user1.getPassword())) {
+            if (login.username().equals(user1.getUsername()) && login.password().equals(user1.getPassword())) {
                 return user1;
             }
         }

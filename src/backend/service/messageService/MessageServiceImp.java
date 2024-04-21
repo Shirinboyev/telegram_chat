@@ -1,6 +1,6 @@
 package backend.service.messageService;
 
-import backend.enums.MessageType;
+import backend.enums.Type;
 import backend.model.chat.Chat;
 import backend.model.massages.Massages;
 
@@ -54,7 +54,7 @@ public class MessageServiceImp implements MessageService{
         List<Massages> messagesOfChat = new ArrayList<>();
 
         for (Massages message : messages) {
-            if (message.getType().equals(MessageType.PRIVATE) && message.getToId().equals(chat.getId())) {
+            if (message.getType().equals(Type.PRIVATE) && message.getToId().equals(chat.getId())) {
                 messagesOfChat.add(message);
             }
         }

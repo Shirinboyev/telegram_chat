@@ -83,15 +83,15 @@ public class GroupOfUserServiceImp implements GroupOfUserService{
                         groupUsers1.getGroupId().equals(groupId));
     }
 
-    @Override
+ /*   @Override
     public boolean isAdmin(String userId, String groupId) {
         for (GroupUser groupUser : groupUsers) {
-            if (groupUser.getUserId().equals(userId) && groupUser.getGroupId().equals(groupId) && groupUser.isAdmin()) {
+            if (groupUser.getUserId().equals(userId) && groupUser.getGroupId().equals(groupId) && groupUser.ge()) {
                 return true;
             }
         }
         return false;
-    }
+    }*/
 
     @Override
     public void deleteAllMembers(String groupId) {
@@ -123,14 +123,5 @@ public class GroupOfUserServiceImp implements GroupOfUserService{
         return null;
     }
 
-    @Override
-    public int countAdmins(String groupId) {
-        int count = 0;
-        for (GroupUser groupUser : groupUsers) {
-            if (groupUser.getGroupId().equals(groupId) && groupUser.isAdmin()) {
-                count++;
-            }
-        }
-        return count;
-    }
+
 }
