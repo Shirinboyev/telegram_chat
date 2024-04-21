@@ -1,5 +1,6 @@
 package backend.service.channelService;
 
+import backend.enums.Type;
 import backend.model.channel.Subscribe;
 import backend.service.BaseService;
 
@@ -13,4 +14,6 @@ public interface ChannelService extends BaseService<Subscribe> {
    List<Subscribe> getChannelsByWord(String search);
 
    boolean issUniqueName(String name);
+
+    boolean createChannel(String name, Type type);
 }

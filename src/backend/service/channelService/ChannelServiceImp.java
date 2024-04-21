@@ -5,12 +5,15 @@ import backend.model.channel.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 public class ChannelServiceImp implements ChannelService {
 
     private static ChannelService channelService;
     private List<Subscribe> subscribes;
-
+    private static ChannelServiceImp instance;
+    private Map<String, Subscribe> channels;
     public ChannelServiceImp() {
         this.subscribes = new ArrayList<> ();
     }
@@ -87,4 +90,26 @@ public class ChannelServiceImp implements ChannelService {
         }
         return true;
     }
+
+    @Override
+    public boolean createChannel(String name, Type type) {
+        String channelId = generateChannelId();
+        if (!channels.containsKey(channelId)) {
+            Subscribe channel = new Subscribe(channelId, name, type,channelId);
+            channels.put(channelId, channel);
+            return true;
+        }
+        return false;
+    }
+
+    private String generateChannelId() {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder channelId = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < 8; i++) {
+            channelId.append(characters.charAt(random.nextInt(characters.length())));
+        }
+        return channelId.toString();
+    }
 }
+
