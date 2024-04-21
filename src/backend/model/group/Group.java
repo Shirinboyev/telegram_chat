@@ -7,9 +7,9 @@ public class Group extends BaseModel {
     private String name;
     private final Type type;
 
-    public Group(String name, Type type) {
+    public Group(String name, String type) {
         this.name = name;
-        this.type = type;
+        this.type = Type.valueOf(type);
 
     }
 

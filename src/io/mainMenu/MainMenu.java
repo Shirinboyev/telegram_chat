@@ -1,16 +1,11 @@
 package io.mainMenu;
 
-import backend.model.channel.Channel;
-import backend.model.contact.Contact;
-import backend.model.group.Group;
-import backend.service.chatService.ChatService;
 import io.setting.Setting;
 import io.utils.Utils;
 import io.view.channels.ChannelView;
 import io.view.chat.ChatView;
 import io.view.contact.ContactView;
 import io.view.group.GroupView;
-import io.view.login.LogIn;
 
 public class MainMenu {
     public static void methods(){
@@ -18,7 +13,6 @@ public class MainMenu {
         do {
         menu();
         choose = Utils.enterInt("choose: ");
-
         switch (choose){
             case 1 -> ContactView.addContact();
             case 2 -> ChatView.methods();

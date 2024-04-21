@@ -5,11 +5,9 @@ import backend.model.user.User;
 import backend.service.userService.UserService;
 import backend.service.userService.UserServiceImp;
 import io.mainMenu.MainMenu;
-import io.utils.Utils;
+import static io.utils.Utils.*;
 
-import java.awt.*;
-
-public class LogIn {
+public class LoginView {
     static UserService userService = UserServiceImp.getInstance();
 
     private static User currentUser;
@@ -21,36 +19,15 @@ public class LogIn {
     }
 
     public static void login() {
-        System.out.println("Log In ....");
-        String username = Utils.enterStr("Username: ");
-        Integer number;
-
-        do {
-            number = Utils.enterInt("number: ");
-            if (!Utils.isNumber(number.toString())) {
-                System.out.println("Number faqat raqam bo'lishi kerak. Iltimos, to'g'ri raqam kiriting.");
-            }
-        } while (!Utils.isNumber(number.toString()));
-
-        String password = Utils.enterStr("Password: ");
-        LoginDto userLogin = new LoginDto(number, password);
-        UserServiceImp userService = new UserServiceImp();
-        currentUser = userService.login(userLogin);
-
-        if (currentUser == null) {
-            System.out.println("wrong❌❌❌");
-            System.out.println("Do you want try again ?  1.Yes, 0.No");
-            Integer choose = Utils.enterInt("choose: ");
-            switch (choose){
-                case 1:login();
-                case 0:{
-                    break;
-                }
-            }
-        } else {
-            System.out.println("\u001B[33mWelcome " + currentUser.getName());
-            MainMenu.methods();
+        String username = enterStr("Username: ");
+        String password = enterStr("Password: ");
+        currentUser = userService.login(new LoginDto(username,password));
+        if(currentUser==null){
+            System.out.println("User not found");
+            return;
         }
+        System.out.println("User login success");
+        MainMenu.methods();
     }
 
     private static void profile() {
@@ -58,7 +35,13 @@ public class LogIn {
     }
 
     public static void signUp() {
-        System.out.println("Sign Up");
+        String name = enterStr("Name: ");
+        String username = enterStr("Username: ");
+        int num = enterInt("Number: ");
+        String password = enterStr("Password: ");
+        boolean add = userService.add(new User(name, username, num, password));
+        System.out.println("User added successfully");
+        /*System.out.println("Sign Up");
 
         String name = Utils.enterStr("Name: ");
         String username = Utils.enterStr("username: ");
@@ -79,7 +62,8 @@ public class LogIn {
 
         System.out.println("User signed up successfully.");
         System.out.println("Welcome " + name);
-        MainMenu.methods();
+        menu();
+        login();*/
     }
 
 }
