@@ -1,5 +1,6 @@
 package backend.service.chatService;
 
+import backend.enums.MessageType;
 import backend.model.chat.Chat;
 
 import java.util.ArrayList;
@@ -23,18 +24,7 @@ public class ChatServiceImp implements ChatService {
         return chatService;
     }
 
-    @Override
-    public Chat getOrCreate(String id1,String id2) {
-        for (Chat chat : chats) {
-            if(Objects.equals(chat.getId1(), id1) && Objects.equals(chat.getId2(), id2)
-            || Objects.equals(chat.getId1(), id2) && Objects.equals(chat.getId2(), id1)) {
-                return chat;
-            }
-        }
-        Chat chat = new Chat(id1,id2);
-        chats.add(chat);
-        return chat;
-    }
+
 
     @Override
     public boolean add(Chat ch) {
@@ -60,5 +50,17 @@ public class ChatServiceImp implements ChatService {
     @Override
     public List<Chat> getList() {
         return chats;
+    }
+
+    @Override
+    public Chat getOrCreate(String id1, String id2, MessageType type) {
+        return chats.stream().filter((c) -> (Objects.equals(c.getId1(), id1) && Objects.equals(c.getId2(), id1))
+                        || (Objects.equals(c.getId2(), id1) && Objects.equals(c.getId1(), id1)))
+                .findFirst().orElseGet(() -> {
+                    Chat chat = new Chat(id1, id2, type);
+                    chats.add(chat);
+                    return chat;
+                });
+
     }
 }

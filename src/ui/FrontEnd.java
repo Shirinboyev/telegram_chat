@@ -9,7 +9,7 @@ import static ui.view.login.LoginView.*;
 public class FrontEnd {
     public static User currentUser;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.println("Welcome to our Telegram application 🥳");
         while (true) {
             LoginView.menu();

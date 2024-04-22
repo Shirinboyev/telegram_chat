@@ -6,18 +6,17 @@ import backend.model.BaseModel;
 public class Message extends BaseModel {
 
     private String text;
-    private final MessageType type;
-    private  final String chatId;
-    private  final String toId;
-    private boolean isRead;
+    private String senderId;
+    private String chatId;
+    private boolean state;
+    private MessageType type;
 
-
-    public Message(String text, MessageType type, String chatId, String toId) {
+    public Message(String text, String senderId, String chatId, MessageType type) {
         this.text = text;
-        this.type = type;
+        this.senderId = senderId;
         this.chatId = chatId;
-        this.toId = toId;
-        this.isRead = false;
+        this.state = false;
+        this.type = type;
     }
 
     public String getText() {
@@ -28,23 +27,35 @@ public class Message extends BaseModel {
         this.text = text;
     }
 
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
+    }
+
     public String getChatId() {
         return chatId;
+    }
+
+    public void setChatId(String chatId) {
+        this.chatId = chatId;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
     }
 
     public MessageType getType() {
         return type;
     }
 
-    public String getToId() {
-        return toId;
-    }
-
-    public boolean isRead() {
-        return isRead;
-    }
-
-    public void setRead(boolean read) {
-        isRead = read;
+    public void setType(MessageType type) {
+        this.type = type;
     }
 }

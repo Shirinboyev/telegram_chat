@@ -1,11 +1,13 @@
 package backend.service.messageService;
 
+import backend.enums.MessageType;
 import backend.enums.Type;
 import backend.model.chat.Chat;
 import backend.model.massages.Message;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MessageServiceImp implements MessageService{
     private static MessageService messageService;
@@ -49,41 +51,19 @@ public class MessageServiceImp implements MessageService{
         return messages;
     }
 
-    @Override
-    public List<Message> getMessagesOfChat(Chat chat) {
-        List<Message> messagesOfChat = new ArrayList<>();
 
-        for (Message message : messages) {
-            if (message.getType().equals(Type.PRIVATE) && message.getToId().equals(chat.getId())) {
-                messagesOfChat.add(message);
-            }
-        }
-
-        return messagesOfChat;
-    }
 
     @Override
-    public List<Message> getMessagesGroupOrChannel(String groupId) {
-        List<Message> messagesList = new ArrayList<>();
+    public List<Message> getGroupMessage(String chatId, String groupId) {
+        List<Message> messageList = new ArrayList<>();
         for (Message message : messages) {
-            if (message.getToId().equals(groupId)) {
-                messagesList.add(message);
+            if(Objects.equals(message.getSenderId(),groupId)&&Objects.equals(message.getType(), MessageType.GROUP)){
+                if(!Objects.equals(message.getChatId(),chatId)){
+                    message.setState(true);
+                }
+                messageList.add(message);
             }
         }
-        return messagesList;
-    }
-
-    @Override
-    public int countNotReadMessages(String fromId, String toId) {
-
-        int count = 0;
-        for (Message message : messages) {
-            if (message.getToId().equals(fromId) && message.getChatId().equals(toId) && (!message.isRead())) {
-                count++;
-
-            }
-        }
-        return count;
-
+        return messageList;
     }
 }

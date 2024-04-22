@@ -13,4 +13,5 @@ public interface GroupService extends BaseService<Group> {
 
     boolean isUnique(String name);
 
+    List<Group> findByName(String search);
 }

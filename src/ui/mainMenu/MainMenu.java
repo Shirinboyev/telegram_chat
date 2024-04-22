@@ -8,7 +8,7 @@ import ui.view.contact.ContactView;
 import ui.view.group.GroupView;
 
 public class MainMenu {
-    public static void methods(){
+    public static void methods() throws Exception {
         Integer choose;
         do {
         menu();

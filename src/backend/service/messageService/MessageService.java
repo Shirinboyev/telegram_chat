@@ -7,11 +7,5 @@ import backend.service.BaseService;
 import java.util.List;
 
 public interface MessageService extends BaseService<Message> {
-    List<Message> getMessagesOfChat(Chat chat);
-
-    List<Message> getMessagesGroupOrChannel(String groupId);
-
-    int countNotReadMessages(String fromId, String toId);
-
-
+    List<Message> getGroupMessage(String chatId, String groupId);
 }
