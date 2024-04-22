@@ -1,6 +1,7 @@
 package ui.view.group;
 
 import backend.enums.Role;
+import backend.enums.Type;
 import backend.model.group.Group;
 import backend.model.group.GroupUser;
 import backend.model.user.User;
@@ -81,27 +82,20 @@ public class GroupView {
 
             switch (Utils.enterInt("choose : ")) {
                 case 1 -> sendMessageToGroup(groupId);
-
                 case 2 -> {
                     exitFromGroup(groupId);
                     return;
                 }
-
                 case 3 -> {
-
                         renameGroup(groupId);
-
                 }
-
                 case 4 -> {
                         deleteGroup(groupId);
                         return;
-
                 }
                 case 5 ->{
                         addAdmin(groupId);
                         return;
-
                 }
                 case 0 -> {
                     return;
@@ -198,7 +192,10 @@ public class GroupView {
 
     private static void createGrop() {
         String name = enterStr("name: ");
-        Group group = new Group(currentUser.getId(),name);
+        Type type = Type.choose();
+        Integer choose = enterInt("choose: ")-1;
+
+        Group group = new Group(currentUser.getId(),type);
         boolean isWorked = groupService.add(group);
         GroupUser member = new GroupUser(currentUser.getId(),group.getId());
         member.setRole(Role.ADMIN);

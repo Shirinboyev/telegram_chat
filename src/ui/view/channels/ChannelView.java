@@ -80,6 +80,6 @@ public class ChannelView {
 
     private static void sendMessage() {
 
-        System.out.println("This feature is under development.");
+        System.out.println(" ");
     }
 }
