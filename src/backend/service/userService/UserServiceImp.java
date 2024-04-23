@@ -16,6 +16,7 @@ public class UserServiceImp implements UserService {
         this.userList = new ArrayList<>();
         this.userList.add(new User("zubayr", "zubayr_ibn_avvam", 935513634, "gayrat3634"));
         this.userList.add(new User("gayrat", "shirinboyev", 7777, "gayrat3634"));
+        this.userList.add(new User("a", "a", 1, "a"));
     }
     public static UserService getInstance() {
         if (userService == null) {

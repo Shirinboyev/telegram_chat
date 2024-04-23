@@ -4,24 +4,33 @@ import backend.enums.Type;
 import backend.model.BaseModel;
 
 public class Group extends BaseModel {
+    private String userId;
     private String name;
-    private final Type type;
 
-    public Group(String name, Type type) {
+    public Group(String userId, String name) {
+        this.userId = userId;
         this.name = name;
-        this.type = type;
-
     }
 
-    public Type getType() {
-        return type;
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getName() {
         return name;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
+
 }

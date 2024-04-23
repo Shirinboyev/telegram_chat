@@ -42,9 +42,9 @@ public class ContactView {
 
     private static void sendMessage(List<User> users, int index) {
         String id = users.get(index).getId();
-        Chat chat = chatService.getOrCreate(FrontEnd.currentUser.getId(), id);
+        Chat chat = chatService.getOrCreate(FrontEnd.currentUser.getId(), id,MessageType.USER);
         String text = enterStr("Text: ");
-        Message message = new Message(text, MessageType.USER, chat.getId(), id);
+        Message message = new Message(text,FrontEnd.currentUser.getId(), chat.getId(), MessageType.USER);
         boolean isWorked = messageService.add(message);
         notificationMessage("Message","sent",isWorked);
     }

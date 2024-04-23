@@ -7,6 +7,7 @@ import backend.service.groupService.groupOfUserService.GroupOfUserServiceImp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GroupServiceImp implements GroupService{
 
@@ -78,5 +79,13 @@ public class GroupServiceImp implements GroupService{
             }
         }
         return true;
+    }
+
+    @Override
+    public List<Group> findByName(String search) {
+        return groups.stream()
+                .filter(group -> group.getName().toLowerCase().contains(search.toLowerCase()))
+                .collect(Collectors.toList());
+
     }
 }

@@ -16,7 +16,7 @@ public class LoginView {
         System.out.println("0. Exit");
     }
 
-    public static void login() {
+    public static void login() throws Exception {
         String username = enterStr("Username: ");
         String password = enterStr("Password: ");
         FrontEnd.currentUser = userService.login(new LoginDto(username,password));

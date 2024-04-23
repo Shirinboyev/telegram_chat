@@ -6,7 +6,7 @@ public enum Type {
          for (int i = 0; i < values().length; i++)
              System.out.println((i + 1) + ": " + values()[i].name());
 
-             Integer choose = enterInt("choose: ");
+             Integer choose = enterInt("choose: ")-1;
 
              if(choose < 0 || choose>values().length){
                  System.out.println("Invalid choise");
