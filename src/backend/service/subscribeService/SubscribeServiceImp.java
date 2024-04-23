@@ -2,6 +2,8 @@ package backend.service.subscribeService;
 
 import backend.model.channel.Subscribe;
 import backend.model.user.User;
+import backend.service.chatService.ChatService;
+import backend.service.chatService.ChatServiceImp;
 import backend.service.userService.UserService;
 import backend.service.userService.UserServiceImp;
 
@@ -16,6 +18,13 @@ public class SubscribeServiceImp implements SubscribeService {
 
     public SubscribeServiceImp() {
         this.subscribeUsers = new ArrayList<> ();
+    }
+
+    public static  SubscribeService getInstance(){
+        if (subscribeService==null){
+            subscribeService= new SubscribeServiceImp ();
+        }
+        return subscribeService;
     }
 
 

@@ -1,14 +1,17 @@
 package backend.model.subscribe;
 
+import backend.enums.Role;
 import backend.model.BaseModel;
 
 public class Subscribe extends BaseModel {
-    private final String userId;
-    private final String channelId;
+    private String userId;
+    private String channelId;
+    private Role role;
 
     public Subscribe(String userId, String channelId) {
         this.userId = userId;
         this.channelId = channelId;
+        this.role = Role.USER;
     }
 
     public String getUserId() {
@@ -18,4 +21,13 @@ public class Subscribe extends BaseModel {
     public String getChannelId() {
         return channelId;
     }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }
+

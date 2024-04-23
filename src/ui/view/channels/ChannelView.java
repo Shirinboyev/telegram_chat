@@ -1,14 +1,26 @@
 package ui.view.channels;
 
+import backend.enums.Role;
 import backend.enums.Type;
 import backend.model.channel.Subscribe;
 import backend.service.channelService.ChannelService;
 import backend.service.channelService.ChannelServiceImp;
+import backend.service.channelService.postServis.PostService;
+import backend.service.channelService.postServis.PostServiceImp;
+import backend.service.subscribeService.SubscribeService;
+import backend.service.subscribeService.SubscribeServiceImp;
+import backend.service.userService.UserService;
+import backend.service.userService.UserServiceImp;
+import ui.FrontEnd;
 import ui.utils.Utils;
 
-public class ChannelView {
-    static ChannelService channelService = ChannelServiceImp.getInstance();
+import java.nio.channels.Channel;
 
+public class ChannelView {
+    private static final ChannelService channelService = ChannelServiceImp.getInstance();
+    private static final PostService postService = PostServiceImp.getInstance();
+    private static final SubscribeService subscribeService = SubscribeServiceImp.getInstance();
+    private static final UserService userService = UserServiceImp.getInstance();
     public static void methods() {
         System.out.println("1. Send Message");
         System.out.println("2. Create Channel");
@@ -20,7 +32,7 @@ public class ChannelView {
         do {
             choose = Utils.enterInt("Choose: ");
             switch (choose) {
-                case 1 -> sendMessage();
+                case 1 -> sendPost();
                 case 2 -> createChannel();
                 case 3 -> renameChannel();
                 case 4 -> deleteChannel();
@@ -61,25 +73,22 @@ public class ChannelView {
     }
 
     private static void createChannel() {
-        String name = Utils.enterStr("Enter the name for the new channel: ");
-        if (!name.isBlank()) {
-            System.out.println("Choose the type of the channel:");
-            System.out.println("1. Public");
-            System.out.println("2. Private");
-            int typeChoice = Utils.enterInt("Choose: ");
-            Type type = (typeChoice == 1) ? Type.PUBLIC : Type.PRIVATE;
-            if (channelService.createChannel(name, type)) {
-                System.out.println("Channel successfully created.");
-            } else {
-                System.out.println("Failed to create channel. Channel name is already in use.");
-            }
-        } else {
-            System.out.println("Invalid channel name! Please try again.");
-        }
+        String name = Utils.enterStr ("name: ");
+        Type type = Type.choose ();
+        Subscribe channel = new Subscribe (name, FrontEnd.currentUser.getId (),type);
+        Subscribe subscribe = new Subscribe(FrontEnd.currentUser.getId(), channel.getId());
+        subscribe.setType (Role.ADMIN);
+        subscribeService.add(subscribe);
+        boolean isWorked = channelService.add(channel);
+
+
+
     }
 
-    private static void sendMessage() {
 
-        System.out.println(" ");
+
+    private static void sendPost() {
+
     }
+
 }

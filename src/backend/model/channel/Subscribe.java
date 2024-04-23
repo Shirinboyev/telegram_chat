@@ -1,20 +1,21 @@
 package backend.model.channel;
 
+import backend.enums.Role;
 import backend.enums.Type;
 import backend.model.BaseModel;
 
 public class Subscribe extends BaseModel {
     private String name;
-    private String description;
-    private final Type type;
     private String ownerId;
+    private Type type;
 
-
-    public Subscribe(String name, String description, Type type, String ownerId) {
+    public Subscribe(String name, String ownerId, Type type) {
         this.name = name;
-        this.description = description;
-        this.type = type;
         this.ownerId = ownerId;
+        this.type = type;
+    }
+
+    public Subscribe(String id, String id1) {
     }
 
     public String getName() {
@@ -25,24 +26,19 @@ public class Subscribe extends BaseModel {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getOwnerId() {
+        return ownerId;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 
     public Type getType() {
         return type;
     }
 
-    @Override
-    public String getId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(String ownerId) {
-        this.ownerId = ownerId;
+    public void setType(Role type) {
+        this.type = type;
     }
 }

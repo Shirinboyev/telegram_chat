@@ -1,5 +1,7 @@
 package backend.model;
 
+import backend.enums.Role;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -20,4 +22,5 @@ public abstract class BaseModel {
     public LocalDateTime getTime() {
         return time;
     }
+
 }
